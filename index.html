@@ -56,7 +56,7 @@
             background: white;
             color: #000;
             font-family: 'Times New Roman', Times, serif; /* Legal Standard */
-            line-height: 1.6;
+            line-height: 1.5;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transform-origin: top center;
             transition: transform 0.2s ease;
@@ -99,16 +99,16 @@
         }
 
         .paper-content p {
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.8rem;
             color: #1a1a1a;
-            font-size: 11pt; /* Standard legal font size */
+            font-size: 10.5pt; /* Standard legal font size */
             text-align: justify; /* Legal justification */
         }
         
         .paper-content li {
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.3rem;
             color: #1a1a1a;
-            font-size: 11pt;
+            font-size: 10.5pt;
             text-align: justify;
         }
 
@@ -153,7 +153,7 @@
             }
             
             /* Prevent awkward breaks inside elements */
-            .mb-6, .mb-8, li {
+            .mb-6, .mb-8, li, .commission-block {
                 page-break-inside: avoid;
             }
 
@@ -425,7 +425,7 @@
                                     We are pleased to offer you the position of <strong class="text-black prevRole">[Role Name]</strong> with OWNIT, on a commission-based, independent contractor engagement.
                                 </p>
                                 <p>
-                                    OWNIT operates globally through its registered entities in India and the United States, delivering B2B growth systems that help service-based businesses increase revenue using high-converting websites, AI-powered chat assistants, CRM, booking systems, and automation.
+                                    OWNIT is a global B2B growth systems company operating through registered entities in India and the United States, helping service-based businesses increase revenue using high-converting websites, AI-powered chat assistants, CRM, booking systems, and automation.
                                 </p>
                                 <p>
                                     This role is designed for individuals who believe in results over hours and are comfortable earning purely based on outcomes.
@@ -434,7 +434,7 @@
 
                             <!-- 1. Company Details -->
                             <div class="mb-6">
-                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">1. Company & Legal Details</h3>
+                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">1. Company & Legal Information</h3>
                                 <p class="mb-2">OWNIT operates under the following registered entities:</p>
                                 <div class="grid grid-cols-2 gap-4 mb-3">
                                     <div class="bg-gray-50 p-3 rounded border border-gray-100">
@@ -458,8 +458,9 @@
                                     <p><span class="text-gray-500 w-32 inline-block">Position:</span> <strong class="prevRole">[Role Name]</strong></p>
                                     <p><span class="text-gray-500 w-32 inline-block">Engagement Type:</span> Independent Contractor (Commission-Based)</p>
                                     <p><span class="text-gray-500 w-32 inline-block">Work Mode:</span> Remote</p>
-                                    <p><span class="text-gray-500 w-32 inline-block">Start Date:</span> <span class="prevDate font-semibold">[Start Date]</span></p>
                                     <p><span class="text-gray-500 w-32 inline-block">Reporting To:</span> Sales Lead / Founder</p>
+                                    <p><span class="text-gray-500 w-32 inline-block">Founder:</span> Deepak</p>
+                                    <p><span class="text-gray-500 w-32 inline-block">Start Date:</span> <span class="prevDate font-semibold">[Start Date]</span></p>
                                 </div>
                                 <p class="text-xs mt-3 text-gray-600 border-l-2 border-blue-500 pl-3 italic">
                                     This engagement does not constitute employment with either entity. There is no fixed salary, and compensation is entirely performance-based.
@@ -469,36 +470,103 @@
                             <!-- 3. Commission -->
                             <div class="mb-6">
                                 <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">3. Commission Structure & Earnings</h3>
-                                <p>Commission is earned only when a deal is successfully closed and payment is received by OWNIT (under the applicable entity).</p>
+                                <p>Commission is earned only when a deal is successfully closed and payment is received by OWNIT, calculated strictly on the net sale amount after applicable taxes.</p>
                                 
                                 <div class="mt-4 mb-4">
-                                    <p class="font-bold text-sm mb-2 underline">Commission Breakdown:</p>
-                                    <ul class="list-none space-y-3 text-sm">
-                                        <li class="pl-4 border-l-2 border-gray-200">
-                                            <strong class="text-black block">A. Appointment Setter Only</strong>
-                                            <span class="text-gray-600">You book a qualified, high-intent appointment & the deal is closed by another agent.</span>
-                                            <br><span class="text-blue-800 font-bold">➡️ 10% commission on the final deal value</span>
-                                        </li>
-                                        <li class="pl-4 border-l-2 border-gray-200">
-                                            <strong class="text-black block">B. Closer Only</strong>
-                                            <span class="text-gray-600">You close a deal booked by another agent.</span>
-                                            <br><span class="text-blue-800 font-bold">➡️ 20% commission on the final deal value</span>
-                                        </li>
-                                        <li class="pl-4 border-l-2 border-gray-200">
-                                            <strong class="text-black block">C. Solo Role (Opening + Closing)</strong>
-                                            <span class="text-gray-600">You generate the lead, book the appointment, and close the deal yourself.</span>
-                                            <br><span class="text-blue-800 font-bold">➡️ 25% commission on the final deal value</span>
-                                        </li>
-                                    </ul>
+                                    
+                                    <!-- Domestic -->
+                                    <div class="commission-block mb-4">
+                                        <p class="font-bold text-sm mb-2 text-blue-800">A. Domestic Commission Structure (India)</p>
+                                        <ul class="list-none space-y-3 text-sm">
+                                            <li class="pl-4 border-l-2 border-gray-200">
+                                                <strong class="text-black block">Appointment Setter Only</strong>
+                                                <span class="text-gray-600 text-xs">Qualified appointment booked, deal closed by another agent</span>
+                                                <br><span class="text-black font-semibold">➡️ 10% of final deal value</span>
+                                            </li>
+                                            <li class="pl-4 border-l-2 border-gray-200">
+                                                <strong class="text-black block">Closer Only</strong>
+                                                <span class="text-gray-600 text-xs">Deal closed by you</span>
+                                                <br><span class="text-black font-semibold">➡️ 20% of final deal value</span>
+                                            </li>
+                                            <li class="pl-4 border-l-2 border-gray-200">
+                                                <strong class="text-black block">Solo Role (Opening + Closing)</strong>
+                                                <span class="text-gray-600 text-xs">Lead generation, appointment booking, and closing done by you</span>
+                                                <br><span class="text-black font-semibold">➡️ 25% of final deal value</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- US/International -->
+                                    <div class="commission-block mb-4">
+                                        <p class="font-bold text-sm mb-2 text-blue-800">B. US & International Commission Structure</p>
+                                        <div class="space-y-4 text-sm">
+                                            
+                                            <!-- Opener -->
+                                            <div class="pl-4 border-l-2 border-blue-100">
+                                                <strong class="text-black block mb-1">1. Opener + Setter (Lead Qualifier)</strong>
+                                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                                    <div>
+                                                        <span class="block text-gray-500">Up to $1,000 deal value</span>
+                                                        <span class="font-semibold">5%</span> (up to $50/lead)
+                                                    </div>
+                                                    <div>
+                                                        <span class="block text-gray-500">$1,001 and above</span>
+                                                        <span class="font-semibold">8%</span> (up to $144/lead)
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Closer -->
+                                            <div class="pl-4 border-l-2 border-blue-100">
+                                                <strong class="text-black block mb-1">2. Closer</strong>
+                                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                                    <div>
+                                                        <span class="block text-gray-500">Up to $2,000 deal</span>
+                                                        <span class="font-semibold">8%</span> (up to $160/deal)
+                                                    </div>
+                                                    <div>
+                                                        <span class="block text-gray-500">$2,001 – $4,000 deal</span>
+                                                        <span class="font-semibold">10%</span> (up to $400/deal)
+                                                    </div>
+                                                    <div class="col-span-2">
+                                                        <span class="block text-gray-500">$4,001 and above</span>
+                                                        <span class="font-semibold">12%</span> (up to $480+/deal)
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Solo -->
+                                            <div class="pl-4 border-l-2 border-blue-100">
+                                                <strong class="text-black block mb-1">3. Solo Plan (Opening + Closing)</strong>
+                                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                                    <div>
+                                                        <span class="block text-gray-500">Up to $2,000 deal</span>
+                                                        <span class="font-semibold">10%</span> (up to $200/deal)
+                                                    </div>
+                                                    <div>
+                                                        <span class="block text-gray-500">$2,001 – $4,000 deal</span>
+                                                        <span class="font-semibold">12%</span> (up to $480/deal)
+                                                    </div>
+                                                    <div class="col-span-2">
+                                                        <span class="block text-gray-500">$4,001 and above</span>
+                                                        <span class="font-semibold">15%</span> (up to $750+/deal)
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                                 
                                 <div class="bg-red-50 p-3 rounded border border-red-100 text-xs text-red-900">
                                     <strong>Commission Rules (Strictly Enforced):</strong>
                                     <ul class="list-disc pl-4 mt-1 space-y-1">
-                                        <li>Commission applies only to net revenue actually received.</li>
+                                        <li>Commission is calculated only on net revenue received after taxes.</li>
                                         <li>No commission on unpaid invoices, cancelled deals, or refunds.</li>
                                         <li>No commission on pipeline, verbal commitments, or unsigned proposals.</li>
-                                        <li><strong>Payment Cycle:</strong> <span class="prevCycle font-bold">Weekly</span> (as communicated internally).</li>
+                                        <li><strong>Payment Cycle:</strong> <span class="prevCycle font-bold">Weekly / Bi-weekly / Monthly</span> (as communicated internally).</li>
+                                        <li>OWNIT reserves the right to revise commission slabs with prior notice.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -506,14 +574,15 @@
                             <!-- 4. Roles -->
                             <div class="mb-6">
                                 <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">4. Roles & Responsibilities</h3>
+                                <p class="mb-2 text-sm">You are expected to:</p>
                                 <ul class="list-disc pl-5 text-sm space-y-1">
-                                    <li>Reach out to potential B2B clients through approved channels.</li>
-                                    <li>Understand the prospect’s business, challenges, and intent.</li>
-                                    <li>Qualify leads based on OWNIT’s defined criteria.</li>
-                                    <li>Book genuine, high-quality appointments.</li>
-                                    <li>Maintain accurate and timely CRM updates.</li>
-                                    <li>Follow OWNIT-approved scripts, pricing boundaries, and positioning.</li>
-                                    <li>Communicate ethically and professionally at all times.</li>
+                                    <li>Reach out to potential B2B clients via approved channels.</li>
+                                    <li>Qualify leads accurately based on OWNIT criteria.</li>
+                                    <li>Book genuine, high-intent appointments.</li>
+                                    <li>Close deals where applicable.</li>
+                                    <li>Maintain accurate CRM updates.</li>
+                                    <li>Follow approved scripts, pricing boundaries, and positioning.</li>
+                                    <li>Communicate professionally and ethically at all times.</li>
                                 </ul>
                                 <div id="notesSection" class="mt-3 p-3 bg-yellow-50 border border-yellow-100 rounded hidden">
                                     <p class="text-xs font-bold text-yellow-800 uppercase mb-1">Additional Notes</p>
@@ -521,46 +590,36 @@
                                 </div>
                             </div>
 
-                            <!-- 5. Performance -->
+                             <!-- 5. Confidentiality -->
                             <div class="mb-6">
-                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">5. Performance Expectations</h3>
-                                <ul class="list-disc pl-5 text-sm space-y-1">
-                                    <li>Priority is appointment quality, not volume.</li>
-                                    <li>Ensure prospects understand OWNIT’s services before booking.</li>
-                                    <li>Meet activity and booking benchmarks (shared internally).</li>
-                                </ul>
-                                <p class="text-xs mt-2 text-red-600 font-medium">Repeated low-quality bookings, fake leads, or policy violations may result in immediate termination without commission payout.</p>
+                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">5. Confidentiality & Data Privacy</h3>
+                                <p class="text-sm mb-2">You may have access to confidential information including client data, lead databases, pricing structures, sales scripts, and internal systems.</p>
+                                <p class="text-sm">All such information is strictly confidential and must not be shared, copied, reused, or exploited for personal or third-party gain. Breach of confidentiality may result in immediate termination and legal action. This obligation survives termination.</p>
                             </div>
 
-                             <!-- 6. Confidentiality -->
+                            <!-- 6. Non-Exclusivity -->
                             <div class="mb-6">
-                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">6. Confidentiality & Data Privacy</h3>
-                                <p class="text-sm mb-2">During your engagement, you may have access to confidential info (Client data, Lead databases, Pricing models, Scripts). You agree that:</p>
-                                <ul class="list-disc pl-5 text-sm space-y-1">
-                                    <li>All information is strictly confidential.</li>
-                                    <li>No data may be copied, shared, sold, or reused.</li>
-                                    <li>Information must not be used for personal or third-party gain.</li>
-                                </ul>
-                                <p class="text-xs mt-2 font-medium">Any breach may result in immediate termination and legal action. These obligations survive termination.</p>
+                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-2 pb-1 font-sans">6. Non-Exclusivity & Restrictions</h3>
+                                <p class="text-sm">This engagement is non-exclusive. However, you may not use OWNIT’s data, scripts, or processes for competing services, nor may you solicit OWNIT clients outside this engagement.</p>
                             </div>
 
-                            <!-- 7 & 8 Sections -->
+                            <!-- 7. Termination -->
                             <div class="mb-6">
-                                <div class="mb-4">
-                                    <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-2 pb-1 font-sans">7. Non-Exclusivity & Restrictions</h3>
-                                    <p class="text-sm">This engagement is non-exclusive. However, you may not use OWNIT’s data/scripts for competing services or solicit OWNIT clients.</p>
-                                </div>
-                                <div>
-                                    <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-2 pb-1 font-sans">8. Termination Policy</h3>
-                                    <p class="text-sm">Either party may terminate this engagement at any time. Commission will be paid only for deals already closed and fully paid. No commission on future pipeline.</p>
-                                </div>
+                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-2 pb-1 font-sans">7. Termination Policy</h3>
+                                <p class="text-sm">Either party may terminate this engagement at any time. Upon termination, commission will be paid only for deals already closed and fully paid. No commission is payable on pipeline or future opportunities.</p>
                             </div>
 
-                            <!-- 9. Acceptance -->
+                            <!-- 8. Acceptance -->
                             <div class="mb-8">
-                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">9. Acceptance of Offer</h3>
-                                <p class="text-sm mb-3">By accepting this offer, you confirm that you understand this is a commission-based independent contractor role with no fixed salary. You agree to comply with OWNIT’s policies.</p>
-                                <p class="text-sm">If you are aligned with our performance-driven culture, we welcome you to OWNIT.</p>
+                                <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">8. Acceptance of Offer</h3>
+                                <p class="text-sm mb-3">By accepting this offer, you confirm that:</p>
+                                <ul class="list-disc pl-5 text-sm space-y-1 mb-3">
+                                    <li>You understand this is a commission-only independent contractor role.</li>
+                                    <li>There is no fixed salary or guaranteed income.</li>
+                                    <li>Earnings depend entirely on performance.</li>
+                                    <li>You agree to comply with OWNIT’s rules, policies, and processes.</li>
+                                </ul>
+                                <p class="text-sm">If you are aligned with our performance-driven culture and ready to take ownership of your results, we welcome you to OWNIT.</p>
                                 <p class="text-sm mt-3 font-semibold bg-gray-50 border-l-4 border-black pl-3 py-1">
                                     This offer is valid for acceptance until <span id="expiryDate" class="underline"></span> (7 days from issue).
                                 </p>
@@ -572,13 +631,12 @@
                                     <div class="flex-1">
                                         <p class="font-bold text-sm mb-1">Warm regards,</p>
                                         <p class="font-bold text-lg">HR Department</p>
-                                        <p class="text-sm text-gray-600 mb-4">OWNIT Growth Systems</p>
+                                        <p class="text-sm text-gray-600 mb-4">OWNIT</p>
                                         
                                         <div class="text-xs text-gray-500 space-y-1 border-t border-gray-200 pt-3">
                                             <p><i class="fas fa-map-marker-alt w-4 text-center"></i> India: Sector 38, Gurugram</p>
                                             <p><i class="fas fa-map-marker-alt w-4 text-center"></i> USA: Delaware</p>
                                             <p><i class="fas fa-envelope w-4 text-center"></i> <a href="mailto:hr@ownit24.com" class="text-blue-600 hover:underline">hr@ownit24.com</a></p>
-                                            <p><i class="fas fa-globe w-4 text-center"></i> <a href="https://ownit24.com" target="_blank" class="text-blue-600 hover:underline">https://ownit24.com</a></p>
                                         </div>
                                     </div>
 
