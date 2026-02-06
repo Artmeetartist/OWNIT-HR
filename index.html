@@ -50,7 +50,7 @@
             background: #475569; 
         }
 
-        /* Paper Preview Styling - LEGAL LOOK */
+        /* Paper Preview Styling */
         .paper-preview {
             background: white;
             color: #000;
@@ -60,7 +60,9 @@
             transform-origin: top center;
             transition: transform 0.2s ease;
             position: relative;
-            overflow: hidden;
+            /* Ensure it grows with content */
+            height: auto;
+            min-height: 100%;
         }
 
         /* Watermark styling */
@@ -104,44 +106,55 @@
             text-align: justify;
         }
 
-        /* Print Specifics */
+        /* Print Specifics - Continuous Flow Optimization */
         @page {
-            size: A4;
-            margin: 0;
+            /* Reset default margins to maximize space and simulate continuous flow */
+            margin: 1cm;
+            size: auto; 
         }
 
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            #preview-section, #preview-section * {
-                visibility: visible;
-            }
-            #preview-section {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                background: white;
-                box-shadow: none;
-                overflow: visible;
-            }
-            .paper-preview {
-                transform: scale(1) !important;
-                box-shadow: none;
-                padding: 2.54cm !important; /* Standard 1 inch margins */
-                max-width: 100% !important;
-                border: none;
-            }
-            /* Ensure background graphics (like subtle watermark) print */
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-
-            .no-print {
+            /* 1. Hide the entire UI wrapper except the content we want */
+            #login-overlay, 
+            header, 
+            #sidebar, 
+            #toolbar, 
+            #toast,
+            button {
                 display: none !important;
+            }
+
+            /* 2. Reset Layout Constraints */
+            body, html, #app-wrapper, main, #preview-panel, #preview-scroll-area {
+                height: auto !important;
+                width: 100% !important;
+                overflow: visible !important;
+                position: static !important;
+                display: block !important;
+                background: white !important;
+            }
+
+            /* 3. Style the Document for Print */
+            #preview-section {
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                left: auto !important;
+                top: auto !important;
+            }
+            
+            /* Prevent awkward breaks inside elements */
+            .mb-6, .mb-8, li {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure background colors (like yellow highlight) print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             
             a {
@@ -199,7 +212,7 @@
             <div class="relative z-10">
                 <div class="text-center mb-8">
                     <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 mx-auto mb-4 text-xl">O</div>
-                    <h1 class="text-2xl font-bold tracking-tight text-white">OWNIT Internal</h1>
+                    <h1 class="text-2xl font-bold tracking-tight text-white">OWNIT</h1>
                     <p class="text-gray-400 text-sm mt-2">Restricted Access. HR Team Only.</p>
                 </div>
                 
@@ -264,7 +277,7 @@
         <main class="flex-1 flex overflow-hidden">
             
             <!-- LEFT: Input Panel -->
-            <section class="w-full md:w-[450px] lg:w-[500px] bg-ownit-card border-r border-gray-800 flex flex-col shrink-0 z-10">
+            <section id="sidebar" class="w-full md:w-[450px] lg:w-[500px] bg-ownit-card border-r border-gray-800 flex flex-col shrink-0 z-10">
                 <div class="p-6 border-b border-gray-800 flex justify-between items-center">
                     <div>
                         <h2 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-1">Agent Details</h2>
@@ -342,9 +355,9 @@
             </section>
 
             <!-- RIGHT: Preview Panel -->
-            <section class="flex-1 bg-gray-900 relative flex flex-col">
+            <section id="preview-panel" class="flex-1 bg-gray-900 relative flex flex-col">
                 <!-- Toolbar -->
-                <div class="h-14 border-b border-gray-800 flex items-center justify-between px-6 bg-gray-900/95 z-10">
+                <div id="toolbar" class="h-14 border-b border-gray-800 flex items-center justify-between px-6 bg-gray-900/95 z-10">
                     <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">Live Preview</span>
                     <div class="flex gap-2">
                         <button onclick="copyToClipboard()" class="px-3 py-1.5 text-xs text-gray-300 bg-gray-800 hover:bg-gray-700 rounded border border-gray-700 transition-colors">
