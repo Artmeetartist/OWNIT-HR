@@ -21,12 +21,13 @@
                     },
                     colors: {
                         ownit: {
-                            dark: '#0f172a',
-                            card: '#1e293b',
+                            bg: '#f8fafc',      /* Light Page BG */
+                            card: '#ffffff',    /* White Card BG */
                             accent: '#3b82f6',
                             success: '#10b981',
-                            text: '#f1f5f9',
-                            muted: '#94a3b8'
+                            text: '#0f172a',    /* Dark Text */
+                            muted: '#64748b',
+                            border: '#e2e8f0'   /* Light Border */
                         }
                     }
                 }
@@ -35,19 +36,19 @@
     </script>
 
     <style>
-        /* Custom Scrollbar */
+        /* Custom Scrollbar - Light Mode */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f172a; 
+            background: #f1f5f9; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155; 
+            background: #cbd5e1; 
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #475569; 
+            background: #94a3b8; 
         }
 
         /* Paper Preview Styling */
@@ -56,13 +57,18 @@
             color: #000;
             font-family: 'Times New Roman', Times, serif; /* Legal Standard */
             line-height: 1.6;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transform-origin: top center;
             transition: transform 0.2s ease;
             position: relative;
-            /* Ensure it grows with content */
             height: auto;
             min-height: 100%;
+            outline: none; /* Remove blue outline when editing */
+        }
+
+        /* Visual cue for editable content on hover */
+        .paper-preview:hover {
+            cursor: text;
         }
 
         /* Watermark styling */
@@ -108,7 +114,6 @@
 
         /* Print Specifics - Continuous Flow Optimization */
         @page {
-            /* Reset default margins to maximize space and simulate continuous flow */
             margin: 1cm;
             size: auto; 
         }
@@ -120,7 +125,8 @@
             #sidebar, 
             #toolbar, 
             #toast,
-            button {
+            button,
+            .edit-hint {
                 display: none !important;
             }
 
@@ -151,7 +157,7 @@
                 page-break-inside: avoid;
             }
 
-            /* Ensure background colors (like yellow highlight) print */
+            /* Ensure background colors print */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -163,16 +169,16 @@
             }
         }
 
-        /* Form Elements */
+        /* Form Elements - Light Mode */
         .input-group {
             position: relative;
             margin-bottom: 1rem;
         }
         .input-field {
             width: 100%;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: white;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             transition: all 0.2s;
@@ -180,13 +186,16 @@
         }
         .input-field:focus {
             border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .input-field::placeholder {
+            color: #94a3b8;
         }
         label {
             display: block;
             font-size: 0.875rem;
             font-weight: 500;
-            color: #94a3b8;
+            color: #64748b;
             margin-bottom: 0.5rem;
         }
         
@@ -200,50 +209,50 @@
         }
     </style>
 </head>
-<body class="bg-ownit-dark text-ownit-text h-screen overflow-hidden font-sans">
+<body class="bg-ownit-bg text-ownit-text h-screen overflow-hidden font-sans">
 
-    <!-- LOGIN SCREEN -->
-    <div id="login-overlay" class="fixed inset-0 z-50 bg-[#0f172a] flex flex-col items-center justify-center p-4">
-        <div class="w-full max-w-md bg-[#1e293b] border border-gray-800 rounded-xl shadow-2xl p-8 animate-fade-in relative overflow-hidden">
+    <!-- LOGIN SCREEN - Light Mode -->
+    <div id="login-overlay" class="fixed inset-0 z-50 bg-gray-50 flex flex-col items-center justify-center p-4">
+        <div class="w-full max-w-md bg-white border border-gray-200 rounded-xl shadow-2xl p-8 animate-fade-in relative overflow-hidden">
             <!-- Background Decoration -->
-            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
 
             <div class="relative z-10">
                 <div class="text-center mb-8">
                     <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 mx-auto mb-4 text-xl">O</div>
-                    <h1 class="text-2xl font-bold tracking-tight text-white">OWNIT</h1>
-                    <p class="text-gray-400 text-sm mt-2">Restricted Access. HR Team Only.</p>
+                    <h1 class="text-2xl font-bold tracking-tight text-gray-900">OWNIT</h1>
+                    <p class="text-gray-500 text-sm mt-2">Restricted Access. HR Team Only.</p>
                 </div>
                 
                 <form onsubmit="handleLogin(event)" class="space-y-5">
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Email Access ID</label>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500"><i class="fas fa-envelope"></i></span>
-                            <input type="email" id="loginEmail" class="w-full bg-[#0f172a] border border-gray-700 text-white pl-10 p-3 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-gray-600" placeholder="hr@ownit24.com" required>
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fas fa-envelope"></i></span>
+                            <input type="email" id="loginEmail" class="w-full bg-white border border-gray-300 text-gray-900 pl-10 p-3 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-gray-400" placeholder="hr@ownit24.com" required>
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Secure Key</label>
                         <div class="relative">
-                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500"><i class="fas fa-lock"></i></span>
-                            <input type="password" id="loginPass" class="w-full bg-[#0f172a] border border-gray-700 text-white pl-10 p-3 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-gray-600" placeholder="••••••••" required>
+                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fas fa-lock"></i></span>
+                            <input type="password" id="loginPass" class="w-full bg-white border border-gray-300 text-gray-900 pl-10 p-3 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-gray-400" placeholder="••••••••" required>
                         </div>
                     </div>
                     
-                    <div id="loginError" class="text-red-400 text-xs text-center hidden p-2 bg-red-900/20 rounded border border-red-900/50">
+                    <div id="loginError" class="text-red-600 text-xs text-center hidden p-2 bg-red-50 rounded border border-red-100">
                         <i class="fas fa-exclamation-triangle mr-1"></i> Invalid credentials. Access denied.
                     </div>
                     
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-lg shadow-lg shadow-blue-900/20 transition-all mt-4 flex justify-center items-center gap-2 group">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg shadow-lg shadow-blue-500/20 transition-all mt-4 flex justify-center items-center gap-2 group">
                         <span>Authenticate & Enter</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform text-xs"></i>
                     </button>
                 </form>
                 
-                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
-                     <p class="text-[10px] text-gray-600 uppercase tracking-widest flex items-center justify-center gap-2">
+                <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                     <p class="text-[10px] text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
                         <i class="fas fa-shield-alt"></i> Secured System 2.0
                      </p>
                 </div>
@@ -252,22 +261,22 @@
     </div>
 
     <!-- MAIN APP WRAPPER (Hidden by default) -->
-    <div id="app-wrapper" class="hidden h-full flex flex-col">
+    <div id="app-wrapper" class="hidden h-full flex flex-col bg-gray-50">
         
         <!-- Navbar -->
-        <header class="h-16 border-b border-gray-800 bg-ownit-card/50 backdrop-blur-md flex items-center justify-between px-6 shrink-0 z-20">
+        <header class="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-6 shrink-0 z-20 shadow-sm">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">O</div>
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/20">O</div>
                 <div>
-                    <h1 class="font-bold text-lg tracking-tight">OWNIT <span class="text-gray-500 font-normal">| Offer Generator</span></h1>
+                    <h1 class="font-bold text-lg tracking-tight text-gray-900">OWNIT <span class="text-gray-400 font-normal">| Offer Generator</span></h1>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <span class="text-xs text-gray-500 flex items-center gap-2">
+                <span class="text-xs text-green-600 flex items-center gap-2 font-medium bg-green-50 px-2 py-1 rounded-full border border-green-100">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                     System Operational
                 </span>
-                <button onclick="logout()" class="text-xs text-red-400 hover:text-red-300 transition-colors border border-red-900/50 px-2 py-1 rounded bg-red-900/20">
+                <button onclick="logout()" class="text-xs text-red-500 hover:text-red-700 transition-colors border border-red-100 px-3 py-1.5 rounded bg-red-50 hover:bg-red-100 font-medium">
                     <i class="fas fa-sign-out-alt mr-1"></i> Logout
                 </button>
             </div>
@@ -277,13 +286,13 @@
         <main class="flex-1 flex overflow-hidden">
             
             <!-- LEFT: Input Panel -->
-            <section id="sidebar" class="w-full md:w-[450px] lg:w-[500px] bg-ownit-card border-r border-gray-800 flex flex-col shrink-0 z-10">
-                <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+            <section id="sidebar" class="w-full md:w-[450px] lg:w-[500px] bg-white border-r border-gray-200 flex flex-col shrink-0 z-10 shadow-[4px_0_24px_-12px_rgba(0,0,0,0.1)]">
+                <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                     <div>
                         <h2 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-1">Agent Details</h2>
                         <p class="text-xs text-gray-400">Enter candidate information.</p>
                     </div>
-                    <button onclick="resetForm()" class="text-xs text-gray-400 hover:text-white transition-colors" title="Clear All Data">
+                    <button onclick="resetForm()" class="text-xs text-gray-500 hover:text-blue-600 transition-colors flex items-center gap-1" title="Clear All Data">
                         <i class="fas fa-undo"></i> Reset
                     </button>
                 </div>
@@ -306,7 +315,14 @@
                         </div>
                     </div>
 
-                    <div class="h-px bg-gray-800 my-2"></div>
+                    <div class="h-px bg-gray-100 my-2"></div>
+
+                    <!-- LOGO UPLOAD SECTION -->
+                    <div class="input-group">
+                        <label>Company Logo (Optional)</label>
+                        <input type="file" id="logoUpload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-gray-200 rounded-lg p-2">
+                        <p class="text-[10px] text-gray-400 mt-1">Upload to replace the default "OWNIT" text logo.</p>
+                    </div>
 
                     <div class="input-group">
                         <label>Role / Position</label>
@@ -326,14 +342,14 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="input-group">
                             <label>Start Date</label>
-                            <input type="date" id="startDate" class="input-field text-gray-400">
+                            <input type="date" id="startDate" class="input-field text-gray-600">
                         </div>
                         <div class="input-group">
                             <label>Payout Cycle</label>
                             <select id="payCycle" class="input-field appearance-none">
                                 <option value="Weekly">Weekly (Friday)</option>
                                 <option value="Bi-weekly">Bi-weekly</option>
-                                <option value="Monthly">Monthly (Net 30)</option>
+                                <option value="Monthly" selected>Monthly (Net 30)</option>
                             </select>
                         </div>
                     </div>
@@ -346,8 +362,8 @@
                 </div>
 
                 <!-- Footer Actions -->
-                <div class="p-6 border-t border-gray-800 bg-gray-900/50">
-                    <button id="generateBtn" disabled onclick="handlePrint()" class="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg shadow-lg shadow-blue-900/20 transition-all flex items-center justify-center gap-2">
+                <div class="p-6 border-t border-gray-200 bg-gray-50">
+                    <button id="generateBtn" disabled onclick="handlePrint()" class="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
                         <i class="fas fa-file-contract"></i>
                         <span>Generate & Download PDF</span>
                     </button>
@@ -355,25 +371,31 @@
             </section>
 
             <!-- RIGHT: Preview Panel -->
-            <section id="preview-panel" class="flex-1 bg-gray-900 relative flex flex-col">
+            <section id="preview-panel" class="flex-1 bg-gray-100 relative flex flex-col">
                 <!-- Toolbar -->
-                <div id="toolbar" class="h-14 border-b border-gray-800 flex items-center justify-between px-6 bg-gray-900/95 z-10">
-                    <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">Live Preview</span>
-                    <div class="flex gap-2">
-                        <button onclick="copyToClipboard()" class="px-3 py-1.5 text-xs text-gray-300 bg-gray-800 hover:bg-gray-700 rounded border border-gray-700 transition-colors">
+                <div id="toolbar" class="h-14 border-b border-gray-200 flex items-center justify-between px-6 bg-white z-10 shadow-sm">
+                    <span class="text-xs font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Live Preview
+                    </span>
+                    <div class="flex items-center gap-3">
+                         <span class="text-xs text-orange-500 bg-orange-50 px-2 py-1 rounded border border-orange-100 flex items-center gap-1 edit-hint">
+                            <i class="fas fa-pen"></i> Document is editable
+                        </span>
+                        <div class="h-4 w-px bg-gray-300 mx-1"></div>
+                        <button onclick="copyToClipboard()" class="px-3 py-1.5 text-xs text-gray-600 bg-gray-50 hover:bg-gray-100 rounded border border-gray-200 transition-colors">
                             <i class="far fa-copy mr-1"></i> Copy Text
                         </button>
-                        <button onclick="handlePrint()" class="px-3 py-1.5 text-xs text-white bg-blue-600 hover:bg-blue-500 rounded border border-blue-500 shadow-lg shadow-blue-900/30 transition-colors flex items-center">
+                        <button onclick="handlePrint()" class="px-3 py-1.5 text-xs text-white bg-blue-600 hover:bg-blue-700 rounded border border-blue-500 shadow-md shadow-blue-500/10 transition-colors flex items-center">
                             <i class="fas fa-download mr-2"></i> PDF / Print
                         </button>
                     </div>
                 </div>
 
                 <!-- Scrollable Preview Area -->
-                <div class="flex-1 overflow-y-auto p-8 md:p-12 flex justify-center bg-[#111111]" id="preview-scroll-area">
+                <div class="flex-1 overflow-y-auto p-8 md:p-12 flex justify-center bg-gray-100" id="preview-scroll-area">
                     
-                    <!-- The Paper Document -->
-                    <div id="preview-section" class="paper-preview w-full max-w-[800px] p-12 md:p-16 relative">
+                    <!-- The Paper Document - Editable -->
+                    <div id="preview-section" class="paper-preview w-full max-w-[800px] p-12 md:p-16 relative" contenteditable="true" spellcheck="false">
                         
                         <!-- Watermark -->
                         <div class="watermark">CONFIDENTIAL</div>
@@ -381,8 +403,13 @@
                         <!-- Header -->
                         <div class="flex justify-between items-start mb-10 paper-content">
                             <div>
-                                <div class="text-3xl font-extrabold tracking-tight text-black font-sans">OWNIT<span class="text-blue-600">.</span></div>
-                                <p class="text-xs text-gray-500 mt-1 uppercase tracking-widest font-semibold font-sans">Growth Systems</p>
+                                <!-- Dynamic Logo Container -->
+                                <div id="brandContainer">
+                                    <div id="textLogo">
+                                        <div class="text-3xl font-extrabold tracking-tight text-black font-sans">OWNIT<span class="text-blue-600">.</span></div>
+                                    </div>
+                                    <img id="imgLogo" src="" alt="Company Logo" class="h-16 w-auto object-contain hidden">
+                                </div>
                             </div>
                             <div class="text-right">
                                  <h1 class="text-xl font-bold uppercase tracking-wide text-gray-900 font-sans">Offer of Engagement</h1>
@@ -393,7 +420,7 @@
                         <div class="paper-content">
                             <!-- Intro -->
                             <div class="mb-8">
-                                <p class="font-medium text-lg mb-2">Dear <span class="prevName highlight bg-yellow-100/50 px-1 rounded">[Agent Name]</span>,</p>
+                                <p class="font-medium text-lg mb-2">Dear <span class="prevName highlight bg-yellow-100 px-1 rounded">[Agent Name]</span>,</p>
                                 <p>
                                     We are pleased to offer you the position of <strong class="text-black prevRole">[Role Name]</strong> with OWNIT, on a commission-based, independent contractor engagement.
                                 </p>
@@ -433,7 +460,6 @@
                                     <p><span class="text-gray-500 w-32 inline-block">Work Mode:</span> Remote</p>
                                     <p><span class="text-gray-500 w-32 inline-block">Start Date:</span> <span class="prevDate font-semibold">[Start Date]</span></p>
                                     <p><span class="text-gray-500 w-32 inline-block">Reporting To:</span> Sales Lead / Founder</p>
-                                    <p><span class="text-gray-500 w-32 inline-block">Founder:</span> Deepak</p>
                                 </div>
                                 <p class="text-xs mt-3 text-gray-600 border-l-2 border-blue-500 pl-3 italic">
                                     This engagement does not constitute employment with either entity. There is no fixed salary, and compensation is entirely performance-based.
@@ -535,6 +561,9 @@
                                 <h3 class="text-sm font-bold uppercase border-b border-gray-200 mb-3 pb-1 font-sans">9. Acceptance of Offer</h3>
                                 <p class="text-sm mb-3">By accepting this offer, you confirm that you understand this is a commission-based independent contractor role with no fixed salary. You agree to comply with OWNIT’s policies.</p>
                                 <p class="text-sm">If you are aligned with our performance-driven culture, we welcome you to OWNIT.</p>
+                                <p class="text-sm mt-3 font-semibold bg-gray-50 border-l-4 border-black pl-3 py-1">
+                                    This offer is valid for acceptance until <span id="expiryDate" class="underline"></span> (7 days from issue).
+                                </p>
                             </div>
 
                             <!-- Signatures -->
@@ -583,7 +612,7 @@
     </div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-ownit-success text-white px-4 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50">
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50">
         <i class="fas fa-check-circle"></i>
         <span id="toastMsg" class="font-medium text-sm">Action Successful</span>
     </div>
@@ -656,7 +685,7 @@
             phone: '',
             role: '',
             startDate: new Date().toISOString().split('T')[0],
-            cycle: 'Weekly',
+            cycle: 'Monthly',
             notes: ''
         };
 
@@ -670,6 +699,7 @@
                 date: document.getElementById('startDate'),
                 cycle: document.getElementById('payCycle'),
                 notes: document.getElementById('hrNotes'),
+                logo: document.getElementById('logoUpload'),
             },
             preview: {
                 names: document.querySelectorAll('.prevName'),
@@ -678,7 +708,10 @@
                 cycles: document.querySelectorAll('.prevCycle'),
                 notes: document.getElementById('prevNotes'),
                 notesSection: document.getElementById('notesSection'),
-                docDate: document.getElementById('docDate')
+                docDate: document.getElementById('docDate'),
+                expiryDate: document.getElementById('expiryDate'),
+                textLogo: document.getElementById('textLogo'),
+                imgLogo: document.getElementById('imgLogo')
             },
             ui: {
                 generateBtn: document.getElementById('generateBtn')
@@ -689,19 +722,50 @@
 
         function initApp() {
             // Set current date in doc header
-            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            els.preview.docDate.textContent = `Date: ${today}`;
+            const today = new Date();
+            const todayStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            els.preview.docDate.textContent = `Date: ${todayStr}`;
+
+            // Calculate Expiry Date (7 days from today)
+            const expiry = new Date(today);
+            expiry.setDate(today.getDate() + 7);
+            const expiryStr = expiry.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            if(els.preview.expiryDate) {
+                els.preview.expiryDate.textContent = expiryStr;
+            }
 
             loadState();
             
             // Attach Listeners
             Object.keys(els.inputs).forEach(key => {
-                if(els.inputs[key]) {
+                if(els.inputs[key] && key !== 'logo') {
                     els.inputs[key].addEventListener('input', (e) => updateState(key, e.target.value));
                 }
             });
 
+            // Logo Listener
+            if(els.inputs.logo) {
+                els.inputs.logo.addEventListener('change', handleLogoUpload);
+            }
+
             render();
+        }
+
+        function handleLogoUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    els.preview.imgLogo.src = e.target.result;
+                    els.preview.imgLogo.classList.remove('hidden');
+                    els.preview.textLogo.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                els.preview.imgLogo.classList.add('hidden');
+                els.preview.textLogo.classList.remove('hidden');
+                els.preview.imgLogo.src = "";
+            }
         }
 
         function updateState(key, value) {
@@ -729,6 +793,7 @@
                 els.inputs.notes.value = state.notes;
             } else {
                 els.inputs.date.value = state.startDate;
+                els.inputs.cycle.value = 'Monthly'; // Force Default
             }
         }
 
@@ -742,7 +807,7 @@
                     phone: '',
                     role: '',
                     startDate: new Date().toISOString().split('T')[0],
-                    cycle: 'Weekly',
+                    cycle: 'Monthly',
                     notes: ''
                 };
                 
@@ -752,8 +817,14 @@
                 els.inputs.phone.value = '';
                 els.inputs.role.value = '';
                 els.inputs.date.value = state.startDate;
-                els.inputs.cycle.value = 'Weekly';
+                els.inputs.cycle.value = 'Monthly';
                 els.inputs.notes.value = '';
+                els.inputs.logo.value = ''; // Reset file input
+                
+                // Reset Logo Display
+                els.preview.imgLogo.classList.add('hidden');
+                els.preview.textLogo.classList.remove('hidden');
+                els.preview.imgLogo.src = "";
 
                 render();
             }
@@ -772,7 +843,7 @@
             els.preview.dates.forEach(el => el.textContent = state.startDate || '[Start Date]');
             
             // Cycle
-            els.preview.cycles.forEach(el => el.textContent = state.cycle || 'Weekly');
+            els.preview.cycles.forEach(el => el.textContent = state.cycle || 'Monthly');
 
             // 2. Role Logic
             let roleTitle = '[Select Role]';
@@ -826,7 +897,7 @@
             const msgEl = document.getElementById('toastMsg');
             
             msgEl.textContent = msg;
-            toast.className = `fixed bottom-5 right-5 text-white px-4 py-3 rounded-lg shadow-xl transform transition-all duration-300 flex items-center gap-3 z-50 ${isError ? 'bg-red-500' : 'bg-ownit-success'}`;
+            toast.className = `fixed bottom-5 right-5 text-white px-4 py-3 rounded-lg shadow-xl transform transition-all duration-300 flex items-center gap-3 z-50 ${isError ? 'bg-red-500' : 'bg-green-500'}`;
             
             toast.classList.remove('translate-y-20', 'opacity-0');
             setTimeout(() => {
